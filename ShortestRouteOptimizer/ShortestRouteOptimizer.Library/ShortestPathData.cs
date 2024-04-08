@@ -1,11 +1,13 @@
-﻿namespace ShortestRouteOptimizer.Library
+﻿using System.Collections.Generic;
+
+namespace ShortestRouteOptimizer.Library
 {
     public class ShortestPathData
     {
-        public string[] NodeNames { get; set; }
+        public List<string> NodeNames { get; set; }
         public int Distance { get; set; }
 
-        public ShortestPathData(string[] nodeNames, int distance)
+        public ShortestPathData(List<string> nodeNames, int distance)
         {
             NodeNames = nodeNames;
             Distance = distance;

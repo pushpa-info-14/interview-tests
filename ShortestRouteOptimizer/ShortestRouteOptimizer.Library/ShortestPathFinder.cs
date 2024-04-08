@@ -53,7 +53,7 @@ namespace ShortestRouteOptimizer.Library
             return new ShortestPathData(GetPath(fromNode, toNode, previous), distances[toNode]);
         }
 
-        private string[] GetPath(Node from, Node to, IReadOnlyDictionary<Node, Node> previous)
+        private List<string> GetPath(Node from, Node to, IReadOnlyDictionary<Node, Node> previous)
         {
             var path = new Stack<Node>();
             var current = to;
@@ -65,7 +65,7 @@ namespace ShortestRouteOptimizer.Library
 
             path.Push(from);
 
-            return path.Select(x => x.Name).ToArray();
+            return path.Select(x => x.Name).ToList();
         }
 
         private Node FindMinDistance(Dictionary<Node, int> distances, ICollection<Node> visited)
