@@ -10,7 +10,6 @@ namespace ShortestRouteOptimizer.ConsoleApp
     {
         static void Main(string[] args)
         {
-            //Dependency injection
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IShortestPathFinder, ShortestPathFinder>()
                 .BuildServiceProvider();
@@ -33,9 +32,8 @@ namespace ShortestRouteOptimizer.ConsoleApp
 
                     var result = shortestPathFinder.ShortestPath(fromNodeName, toNodeName, graphNodes);
 
-                    Console.WriteLine($"FromNode = {fromNodeName}, ToNode = {toNodeName}: " +
+                    Console.WriteLine($"{fromNodeName} to {toNodeName}: Distance = {result.Distance}, Path = " +
                                       string.Join(",", result.NodeNames));
-                    Console.WriteLine($"Distance: {result.Distance}");
                 }
                 catch (Exception e)
                 {
@@ -55,17 +53,17 @@ namespace ShortestRouteOptimizer.ConsoleApp
             }
         }
 
-        static List<Node> CreateDummyGraph()
+        private static List<Node> CreateDummyGraph()
         {
-            var nodeA = new Node { Name = "A" };
-            var nodeB = new Node { Name = "B" };
-            var nodeC = new Node { Name = "C" };
-            var nodeD = new Node { Name = "D" };
-            var nodeE = new Node { Name = "E" };
-            var nodeF = new Node { Name = "F" };
-            var nodeG = new Node { Name = "G" };
-            var nodeH = new Node { Name = "H" };
-            var nodeI = new Node { Name = "I" };
+            var nodeA = new Node("A");
+            var nodeB = new Node("B");
+            var nodeC = new Node("C");
+            var nodeD = new Node("D");
+            var nodeE = new Node("E");
+            var nodeF = new Node("F");
+            var nodeG = new Node("G");
+            var nodeH = new Node("H");
+            var nodeI = new Node("I");
             nodeA.AddAdjacencyNode(nodeB, 4);
             nodeA.AddAdjacencyNode(nodeH, 8);
 

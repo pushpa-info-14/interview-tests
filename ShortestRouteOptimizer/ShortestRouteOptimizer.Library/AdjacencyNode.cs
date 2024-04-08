@@ -2,8 +2,8 @@
 {
     public class AdjacencyNode
     {
-        public Node Node { get; set; }
-        public int Distance { get; set; }
+        public Node Node { get; }
+        public int Distance { get; }
 
         public AdjacencyNode(Node node, int distance)
         {

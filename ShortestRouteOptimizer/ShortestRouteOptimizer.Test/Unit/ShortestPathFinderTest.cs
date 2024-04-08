@@ -23,15 +23,15 @@ namespace ShortestRouteOptimizer.Test.Unit
             //    { 0, 0, 2, 0, 0, 0, 6, 7, 0 }
             //};
 
-            var nodeA = new Node { Name = "A" };
-            var nodeB = new Node { Name = "B" };
-            var nodeC = new Node { Name = "C" };
-            var nodeD = new Node { Name = "D" };
-            var nodeE = new Node { Name = "E" };
-            var nodeF = new Node { Name = "F" };
-            var nodeG = new Node { Name = "G" };
-            var nodeH = new Node { Name = "H" };
-            var nodeI = new Node { Name = "I" };
+            var nodeA = new Node("A");
+            var nodeB = new Node("B");
+            var nodeC = new Node("C");
+            var nodeD = new Node("D");
+            var nodeE = new Node("E");
+            var nodeF = new Node("F");
+            var nodeG = new Node("G");
+            var nodeH = new Node("H");
+            var nodeI = new Node("I");
             nodeA.AddAdjacencyNode(nodeB, 4);
             nodeA.AddAdjacencyNode(nodeH, 8);
 
@@ -155,9 +155,9 @@ namespace ShortestRouteOptimizer.Test.Unit
         [TestMethod]
         public void Test2()
         {
-            var nodeA = new Node { Name = "A" };
-            var nodeB = new Node { Name = "B" };
-            var nodeC = new Node { Name = "C" };
+            var nodeA = new Node("A");
+            var nodeB = new Node("B");
+            var nodeC = new Node("C");
             nodeA.AddAdjacencyNode(nodeB, 4);
             nodeB.AddAdjacencyNode(nodeA, 4);
             nodeB.AddAdjacencyNode(nodeC, 8);

@@ -68,7 +68,7 @@ namespace ShortestRouteOptimizer.Library
             return path.Select(x => x.Name).ToArray();
         }
 
-        private Node FindMinDistance(Dictionary<Node, int> distances, HashSet<Node> visited)
+        private Node FindMinDistance(Dictionary<Node, int> distances, ICollection<Node> visited)
         {
             Node minNode = null;
             var minValue = int.MaxValue;
