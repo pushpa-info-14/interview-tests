@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GraphSeeder.cs" />
+    <Compile Include="IGraphSeeder.cs" />
     <Compile Include="ShortestPathData.cs" />
     <Compile Include="IShortestPathFinder.cs" />
     <Compile Include="AdjacencyNode.cs" />

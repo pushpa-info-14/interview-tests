@@ -1,0 +1,93 @@
+﻿@model List<ShortestRouteOptimizer.Library.Node>
+@{
+    ViewBag.Title = "Shortest Path Finder";
+}
+
+<main>
+    <section>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label for="fromNode">FromNode</label>
+                </div>
+                <div class="form-group col-md-2">
+                    <select id="fromNode" class="form-control">
+                        <option value="Default" selected>Choose...</option>
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="fromNode">ToNode</label>
+                </div>
+                <div class="form-group col-md-2">
+                    <select id="toNode" class="form-control">
+                        <option value="Default" selected>Choose...</option>
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.Name">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group col-md-1">
+                    <button id="submitButton" type="submit" class="btn btn-primary">Find</button>
+                </div>
+            </div>
+            <div class="form-row">
+                <h4 id="result"></h4>
+            </div>
+        </form>
+    </section>
+</main>
+<style>
+    .form-row {
+        display: flex
+    }
+
+    label, button {
+        margin-left: 20px
+    }
+
+    #result {
+        margin-top: 50px
+    }
+</style>
+@section scripts
+{
+    <script type="text/javascript">
+        $("#submitButton").click(function (e) {
+            e.preventDefault();
+            let fromNode = $("#fromNode").find(":selected").val();
+            let toNode = $("#toNode").find(":selected").val();
+
+            var payload = {
+                FromNodeName: fromNode,
+                ToNodeName: toNode
+            };
+            var jsonPayload = JSON.stringify(payload);
+            console.log(payload);
+            console.log(jsonPayload);
+
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("Calculate", "ShortestPath")',
+                data: jsonPayload,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    console.log(data);
+                    console.log(data.NodeNames);
+                    console.log(data.Distance);
+                    let result = "From node " + fromNode + " to node " + toNode + ": Distance = " + data.Distance + ", Path = " + data.NodeNames.join(",");
+                    $("#result").text(result);
+                },
+                error: function (error) {
+                    console.log(error);
+                    $("#result").text(error.responseJSON);
+                }
+            });
+        });
+    </script>
+}

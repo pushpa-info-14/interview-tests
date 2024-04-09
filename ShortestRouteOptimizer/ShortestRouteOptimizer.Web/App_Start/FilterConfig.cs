@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using ShortestRouteOptimizer.Web.Attributes;
 using System.Web.Mvc;
 
 namespace ShortestRouteOptimizer.Web
@@ -8,6 +8,7 @@ namespace ShortestRouteOptimizer.Web
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleExceptionAttribute());
         }
     }
 }
