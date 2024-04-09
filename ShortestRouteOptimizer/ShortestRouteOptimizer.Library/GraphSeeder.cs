@@ -16,41 +16,38 @@ namespace ShortestRouteOptimizer.Library
             var nodeH = new Node("H");
             var nodeI = new Node("I");
             nodeA.AddAdjacencyNode(nodeB, 4);
-            nodeA.AddAdjacencyNode(nodeH, 8);
+            nodeA.AddAdjacencyNode(nodeC, 6);
 
             nodeB.AddAdjacencyNode(nodeA, 4);
-            nodeB.AddAdjacencyNode(nodeC, 8);
-            nodeB.AddAdjacencyNode(nodeH, 11);
+            nodeB.AddAdjacencyNode(nodeF, 2);
 
-            nodeC.AddAdjacencyNode(nodeB, 8);
-            nodeC.AddAdjacencyNode(nodeD, 7);
-            nodeC.AddAdjacencyNode(nodeF, 4);
-            nodeC.AddAdjacencyNode(nodeI, 2);
+            nodeC.AddAdjacencyNode(nodeA, 6);
+            nodeC.AddAdjacencyNode(nodeD, 8);
 
-            nodeD.AddAdjacencyNode(nodeC, 7);
-            nodeD.AddAdjacencyNode(nodeE, 9);
-            nodeD.AddAdjacencyNode(nodeF, 14);
+            nodeD.AddAdjacencyNode(nodeC, 8);
+            nodeD.AddAdjacencyNode(nodeE, 4);
+            nodeD.AddAdjacencyNode(nodeG, 1);
 
-            nodeE.AddAdjacencyNode(nodeD, 9);
-            nodeE.AddAdjacencyNode(nodeF, 10);
+            nodeE.AddAdjacencyNode(nodeB, 2);
+            nodeE.AddAdjacencyNode(nodeD, 4);
+            nodeE.AddAdjacencyNode(nodeF, 3);
+            nodeE.AddAdjacencyNode(nodeI, 8);
 
-            nodeF.AddAdjacencyNode(nodeC, 4);
-            nodeF.AddAdjacencyNode(nodeD, 14);
-            nodeF.AddAdjacencyNode(nodeE, 10);
-            nodeF.AddAdjacencyNode(nodeG, 2);
+            nodeF.AddAdjacencyNode(nodeB, 2);
+            nodeF.AddAdjacencyNode(nodeE, 3);
+            nodeF.AddAdjacencyNode(nodeG, 4);
+            nodeF.AddAdjacencyNode(nodeH, 6);
 
-            nodeG.AddAdjacencyNode(nodeF, 2);
-            nodeG.AddAdjacencyNode(nodeH, 1);
-            nodeG.AddAdjacencyNode(nodeI, 6);
+            nodeG.AddAdjacencyNode(nodeD, 1);
+            nodeG.AddAdjacencyNode(nodeF, 4);
+            nodeG.AddAdjacencyNode(nodeH, 5);
+            nodeG.AddAdjacencyNode(nodeI, 5);
 
-            nodeH.AddAdjacencyNode(nodeA, 8);
-            nodeH.AddAdjacencyNode(nodeB, 11);
-            nodeH.AddAdjacencyNode(nodeG, 1);
-            nodeH.AddAdjacencyNode(nodeI, 7);
+            nodeH.AddAdjacencyNode(nodeF, 6);
+            nodeH.AddAdjacencyNode(nodeG, 5);
 
-            nodeI.AddAdjacencyNode(nodeC, 2);
-            nodeI.AddAdjacencyNode(nodeG, 6);
-            nodeI.AddAdjacencyNode(nodeH, 7);
+            nodeI.AddAdjacencyNode(nodeE, 8);
+            nodeI.AddAdjacencyNode(nodeG, 5);
 
             var graphNodes = new List<Node>
             {
