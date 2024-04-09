@@ -16,6 +16,7 @@ namespace ShortestRouteOptimizer.Web.Controllers
             _shortestPathFinder = shortestPathFinder;
             _graphNodes = graphNodes;
         }
+
         public ActionResult Index()
         {
             return View(_graphNodes);
