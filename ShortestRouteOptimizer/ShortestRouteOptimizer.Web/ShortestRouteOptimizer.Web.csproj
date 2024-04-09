@@ -162,7 +162,6 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\ShortestPathController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\ValidationException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
