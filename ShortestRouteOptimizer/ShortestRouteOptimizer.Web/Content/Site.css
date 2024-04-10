@@ -18,3 +18,15 @@ select,
 textarea {
     max-width: 280px;
 }*/
+
+#shortestPathFinderForm .form-row {
+  display: flex
+}
+
+#shortestPathFinderForm label, #shortestPathFinderForm button {
+  margin-left: 20px
+}
+
+#result {
+  margin-top: 50px
+}
