@@ -8,8 +8,8 @@
 PM> Uninstall-package Microsoft.CodeDom.Providers.DotNetCompilerPlatform
 PM> Uninstall-package Microsoft.Net.Compilers
 ```
-2. After you do this, your web.config file should be auto-updated. In case it is not, look for the below code
-in ```Web.config``` file and delete below piece of code
+2. After you do this, your ```Web.config``` file should be auto-updated. In case it is not, look for the below piece of code
+in ```Web.config``` file and delete it
 ```
   <system.codedom>
     <compilers>
