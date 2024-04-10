@@ -1,6 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Autofac;
 using ShortestRouteOptimizer.Library;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ShortestRouteOptimizer.ConsoleApp
@@ -9,20 +10,15 @@ namespace ShortestRouteOptimizer.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var serviceProvider = new ServiceCollection()
-                .AddSingleton<IShortestPathFinder, ShortestPathFinder>()
-                .AddSingleton<IGraphSeeder, GraphSeeder>()
-                .BuildServiceProvider();
+            var container = BuildContainer();
+            var shortestPathFinder = container.Resolve<IShortestPathFinder>();
+            var graph = container.Resolve<List<Node>>();
 
-            var shortestPathFinder = serviceProvider.GetService<IShortestPathFinder>();
-            var graphSeeder = serviceProvider.GetService<IGraphSeeder>();
-
-            var graphNodes = graphSeeder.SeedGraph();
 
             while (true)
             {
 
-                Console.WriteLine($"Graph Nodes: {string.Join(",", graphNodes.Select(x => x.Name))}");
+                Console.WriteLine($"Graph Nodes: {string.Join(",", graph.Select(x => x.Name))}");
 
                 try
                 {
@@ -31,7 +27,7 @@ namespace ShortestRouteOptimizer.ConsoleApp
                     Console.Write("Enter ToNode: ");
                     var toNodeName = Console.ReadLine()?.ToUpper();
 
-                    var result = shortestPathFinder.ShortestPath(fromNodeName, toNodeName, graphNodes);
+                    var result = shortestPathFinder.ShortestPath(fromNodeName, toNodeName, graph);
 
                     Console.WriteLine($"{fromNodeName} to {toNodeName}: Distance = {result.Distance}, Path = " +
                                       string.Join(",", result.NodeNames));
@@ -52,6 +48,18 @@ namespace ShortestRouteOptimizer.ConsoleApp
                     Console.WriteLine();
                 }
             }
+        }
+
+        private static IContainer BuildContainer()
+        {
+            var builder = new ContainerBuilder();
+
+            var graphSeeder = new GraphSeeder();
+            var graph = graphSeeder.SeedGraph();
+            builder.RegisterInstance(graph);
+            builder.RegisterInstance(new ShortestPathFinder()).As<IShortestPathFinder>();
+
+            return builder.Build();
         }
     }
 }
